@@ -27,6 +27,13 @@ var HeaderView = Backbone.View.extend({
   }
 });
 
+var ButtonView = Backbone.View.extend({
+  render: function() {
+    var buttonHTML = '<button class="cool-button">CLICK ME</button>';
+    this.$el.html(buttonHTML);
+  }
+});
+
 $(document).ready(function() {
   var page = new PageView({
     el: $('body')
