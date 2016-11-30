@@ -37,6 +37,15 @@ var PageView = Backbone.View.extend({
 
     this.$el.append(button1.$el);
     this.$el.append(button2.$el);
+
+    // Listen to the buttons
+    this.listenTo(button1, 'cool-button-was-clicked', this.addToCount);
+    this.listenTo(button2, 'cool-button-was-clicked', this.addToCount);
+  },
+
+  addToCount: function() {
+    this.count += 1;
+    this.$('p').text('Times clicked: ' + this.count);
   }
 });
 
@@ -57,7 +66,7 @@ var ButtonView = Backbone.View.extend({
   },
 
   onClick: function(e) {
-    alert('You clicked me!');
+    this.trigger('cool-button-was-clicked');
   }
 });
 
