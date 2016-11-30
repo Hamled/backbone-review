@@ -50,6 +50,14 @@ var ButtonView = Backbone.View.extend({
   render: function() {
     var buttonHTML = '<button class="cool-button">CLICK ME</button>';
     this.$el.html(buttonHTML);
+  },
+
+  events: {
+    'click .cool-button': 'onClick'
+  },
+
+  onClick: function(e) {
+    alert('You clicked me!');
   }
 });
 
