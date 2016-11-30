@@ -3,6 +3,10 @@ import Backbone from 'backbone';
 
 
 var PageView = Backbone.View.extend({
+  initialize: function(options) {
+    this.count = 0;
+  },
+
   render: function() {
     // Make a place for the header banner
     var headerTag = $('<header>');
@@ -18,6 +22,21 @@ var PageView = Backbone.View.extend({
     var cage = $('<img>');
     cage.attr('src', 'https://www.placecage.com/200/300');
     this.$el.append(cage);
+
+    // Setup our counter
+    var counter = $('<p>');
+    counter.text('Times clicked: ' + this.count);
+    this.$el.append(counter);
+
+    // Setup our buttons
+    var button1 = new ButtonView();
+    var button2 = new ButtonView();
+
+    button1.render();
+    button2.render();
+
+    this.$el.append(button1.$el);
+    this.$el.append(button2.$el);
   }
 });
 
